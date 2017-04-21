@@ -22,20 +22,25 @@ public class SampleFileGenerator {
 
     public static void main(String[] args) throws IOException {
 
+        generateSampleFile("sample.txt");
+    }
+
+    public static Path generateSampleFile(String fileName) throws IOException {
         ArrayList<Pattern> patterns = getPatterns();
         int size = 100;
 
-        Path path = Paths.get("sample.txt");
+        Path path = Paths.get(fileName);
         if(Files.exists(path)){
             Files.delete(path);
         }
         Path file = Files.createFile(path);
         for (int i = 0; i < size-1; i++) {
             String msg = generateLogMsg(patterns)+System.lineSeparator();
-            Files.write(file, msg.getBytes(),StandardOpenOption.APPEND);
+            Files.write(file, msg.getBytes(), StandardOpenOption.APPEND);
         }
         String msg = generateLogMsg(patterns);
         Files.write(file, msg.getBytes(),StandardOpenOption.APPEND);
+        return path;
     }
 
     private static String generateLogMsg(ArrayList<Pattern> patterns) {
