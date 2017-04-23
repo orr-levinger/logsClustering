@@ -1,14 +1,11 @@
 package impl;
 
-import com.google.common.collect.Lists;
 import com.google.common.io.Files;
-import face.Pattern;
+import face.Cluster;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -22,7 +19,7 @@ public class LogClusteringService {
         List<String> lines = Files.readLines(file, Charset.forName("utf-8"));
         lines.forEach(logMsg -> {
             if (clusters.size() == 0) {
-                clusters.add(new Cluster(logMsg));
+                clusters.add(ClusterFactory.getCluster(logMsg));
             } else {
                 boolean matched = false;
                 for (Cluster cluster : clusters) {
@@ -32,7 +29,7 @@ public class LogClusteringService {
                     }
                 }
                 if (!matched) {
-                    clusters.add(new Cluster(logMsg));
+                    clusters.add(ClusterFactory.getCluster(logMsg));
                 }
             }
 
@@ -40,7 +37,7 @@ public class LogClusteringService {
         });
         for (Cluster cluster : clusters) {
             System.out.println("====");
-            Set<String> logs = cluster.getLogs();
+            List<String> logs = cluster.getLogs();
             for (String log : logs) {
                 System.out.println(log);
             }

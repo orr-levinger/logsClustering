@@ -1,25 +1,33 @@
 package impl;
 
+/**
+ * Created by Or on 23/04/2017.
+ */
+
+import face.Cluster;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Or on 21/04/2017.
  */
-public class Cluster {
+public class WordsCluster implements Cluster {
 
     private int index;
     private String[] pattern;
     private Set<String> words = new HashSet<>();
-    private Set<String> logs = new HashSet<>();
+    private List<String> logs = new ArrayList<>();
 
 
-    public Cluster(String log) {
+    public WordsCluster(String log) {
         this.pattern = log.split(" ");
         this.logs.add(log);
     }
 
-    boolean match(String log){
+    public boolean match(String log){
         String[] words = log.split(" ");
         if(words.length != pattern.length){
             return false;
@@ -53,18 +61,12 @@ public class Cluster {
 
         return true;
     }
-    int getIndex(){
-        return index;
-    }
-    void setIndex(int index){
-        this.index = index;
-    }
 
     public Set<String> getWords() {
         return words;
     }
 
-    public Set<String> getLogs() {
+    public List<String> getLogs() {
         return logs;
     }
 }
