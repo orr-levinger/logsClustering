@@ -1,7 +1,8 @@
-package impl;
+package main;
 
 import com.google.common.io.Files;
 import face.Cluster;
+import impl.ClusterFactory;
 
 import java.io.File;
 import java.io.IOException;

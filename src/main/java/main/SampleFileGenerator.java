@@ -1,4 +1,4 @@
-package impl;
+package main;
 
 import com.google.common.collect.Lists;
 import face.Pattern;
