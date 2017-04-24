@@ -16,8 +16,8 @@ comparing hashes. this is implemented by HashCluster resulting in O(NC).
 
 for scaling this:
 for scalding i would keep the services stateless and keep all the data in a scalable data base.
-the logs the chaging words and the list for clusters.
-keep a referese from the logs and words to there's cluster ids..
+the logs the changing words and the list for clusters.
+keep a reference from the logs and words to there's cluster ids..
 that way i can deploy as many instances of the Cluster Service and use a framework like URIKA to load balance the load
 of request. i will have to fugure out how to sync by verifying when i put updates to tables that they havnt changed since i did the GET
 i can achive that by keeping a version of etch record and if i try to PUT a record the database will verify that the record wasnt changed by a different instanse
