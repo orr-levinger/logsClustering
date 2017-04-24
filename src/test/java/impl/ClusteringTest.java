@@ -18,7 +18,7 @@ public class ClusteringTest {
     @Test
     public void clusteringTest() throws IOException {
         ClusterService clusterService = new ClusterService();
-        File file = SampleFileGenerator.generateSampleFile("sample.txt").toFile();
+        File file = SampleFileGenerator.generateSampleFile("sample.txt",100).toFile();
         List<String> lines = Files.readLines(file, Charset.forName("utf-8"));
         lines.forEach(clusterService::handleNewLine);
         Files.write(clusterService.getReport().getBytes(),new File("result.txt"));

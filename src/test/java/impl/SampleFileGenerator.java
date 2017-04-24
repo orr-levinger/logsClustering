@@ -18,15 +18,9 @@ import java.util.Random;
  */
 public class SampleFileGenerator {
 
-    public static void main(String[] args) throws IOException {
 
-        generateSampleFile("sample.txt");
-    }
-
-    public static Path generateSampleFile(String fileName) throws IOException {
+    public static Path generateSampleFile(String fileName, int size) throws IOException {
         ArrayList<Pattern> patterns = getPatterns();
-        int size = 100;
-
         Path path = Paths.get(fileName);
         if(Files.exists(path)){
             Files.delete(path);
