@@ -16,7 +16,7 @@ import java.util.List;
 public class ClusteringTest {
 
     @Test
-    public void shouldSetCorrectEmailAddress() throws IOException {
+    public void clusteringTest() throws IOException {
         ClusterService clusterService = new ClusterService();
         File file = SampleFileGenerator.generateSampleFile("sample.txt").toFile();
         List<String> lines = Files.readLines(file, Charset.forName("utf-8"));
