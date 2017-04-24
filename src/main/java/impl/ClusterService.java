@@ -9,6 +9,10 @@ class ClusterService {
 
     private List<Cluster> clusters = new ArrayList<>();
 
+
+    public ClusterService() {
+    }
+
     public void handleNewLine(String logMsg){
         if (clusters.size() == 0) {
             clusters.add(ClusterFactory.getCluster(logMsg));
@@ -29,7 +33,7 @@ class ClusterService {
     public String getReport(){
         StringBuilder stringBuilder = new StringBuilder();
         for (Cluster cluster : clusters) {
-            stringBuilder.append("====");
+            stringBuilder.append("====\n");
             List<String> logs = cluster.getLogs();
             for (String log : logs) {
                 stringBuilder.append(log).append("\n");

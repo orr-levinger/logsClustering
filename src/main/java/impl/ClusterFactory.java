@@ -8,6 +8,7 @@ import face.Cluster;
 public class ClusterFactory {
 
     public static Cluster getCluster(String str){
-        return new WordsCluster(str);
+        //return new WordsCluster(str);
+        return new HashCluster(str);
     }
 }
