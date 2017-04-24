@@ -15,12 +15,13 @@ comparing hashes. this is implemented by HashCluster resulting in O(NC).
 
 
 for scaling this:
- we could just create a method that returns all clusters keys and indexes and performing the check in the client side.
-if he matches any of the keys just update the cluster. if none matched we need to check the "fresh clusters" one by one still we can do that
-in the clint side. and if none of them matched we create a new cluster.
+for scalding i would keep the services stateless and keep all the data in a scalable data base.
+the logs the chaging words and the list for clusters.
+keep a referese from the logs and words to there's cluster ids..
+that way i can deploy as many instances of the Cluster Service and use a framework like URIKA to load balance the load
+of request. i will have to fugure out how to sync by verifying when i put updates to tables that they havnt changed since i did the GET
+i can achive that by keeping a version of etch record and if i try to PUT a record the database will verify that the record wasnt changed by a different instanse
 
-to avoid creating the same cluster twice we can monitor the number of clusters in the data base
-level and before creating a new one
- make sure that the number of clusters didnt change.
+
 
 
