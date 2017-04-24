@@ -1,8 +1,5 @@
 package impl;
 
-/**
- * Created by Or on 23/04/2017.
- */
 
 import face.Cluster;
 
@@ -11,9 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Or on 21/04/2017.
- */
 public class WordsCluster implements Cluster {
 
     private int index;
@@ -22,7 +16,7 @@ public class WordsCluster implements Cluster {
     private List<String> logs = new ArrayList<>();
 
 
-    public WordsCluster(String log) {
+    WordsCluster(String log) {
         this.pattern = log.split(" ");
         this.logs.add(log);
     }

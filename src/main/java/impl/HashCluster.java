@@ -2,7 +2,6 @@ package impl;
 
 
 import face.Cluster;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,9 +13,7 @@ import java.util.Set;
  */
 public class HashCluster implements Cluster {
 
-    //private int index;
-    //private String[] pattern;
-    final int PREFIX_LENGTH=20;
+    private final int PREFIX_LENGTH=20;
     private int key = 0;
     private int startDiffIndex = -1;
     private Set<String> words = new HashSet<>();
@@ -52,10 +49,10 @@ public class HashCluster implements Cluster {
             int indexOfFirstDiff = firstDiffIndex(originNoDate, logNoDate);
             int indexOfEndOfDiffWordInOrigin = originNoDate.indexOf(" ", indexOfFirstDiff);
             int indexOfEndOfDiffWordInLog = logNoDate.indexOf(" ", indexOfFirstDiff);
-            String originNoDateNoWord = new StringBuilder().append(originNoDate.substring(0, indexOfFirstDiff)).
-                    append(originNoDate.substring(indexOfEndOfDiffWordInOrigin)).toString();
-            String logNoDateNoWord = new StringBuilder().append(logNoDate.substring(0, indexOfFirstDiff)).
-                    append(logNoDate.substring(indexOfEndOfDiffWordInLog)).toString();
+            String originNoDateNoWord = originNoDate.substring(0, indexOfFirstDiff) +
+                    originNoDate.substring(indexOfEndOfDiffWordInOrigin);
+            String logNoDateNoWord = logNoDate.substring(0, indexOfFirstDiff) +
+                    logNoDate.substring(indexOfEndOfDiffWordInLog);
             if(originNoDateNoWord.equals(logNoDateNoWord)){
                 key = originNoDateNoWord.hashCode();
                 this.startDiffIndex = indexOfFirstDiff;
@@ -73,7 +70,6 @@ public class HashCluster implements Cluster {
     private int firstDiffIndex(String originLog, String logNoDate) {
         char[] originLogCharArray = originLog.toCharArray();
         char[] logNoDateCharArray = logNoDate.toCharArray();
-        int indexOfFirstDiff;
         for(int i = 0; i < originLogCharArray.length ; i++){
             if(originLogCharArray[i]!=logNoDateCharArray[i]){
                 return i;

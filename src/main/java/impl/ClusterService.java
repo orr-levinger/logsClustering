@@ -5,10 +5,7 @@ import face.Cluster;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by 310237164 on 24/04/2017.
- */
-public class ClusterService {
+class ClusterService {
 
     private List<Cluster> clusters = new ArrayList<>();
 
